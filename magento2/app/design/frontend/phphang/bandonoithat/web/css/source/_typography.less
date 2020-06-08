@@ -1,0 +1,41 @@
+// /**
+//  * Copyright © Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    /* vietnamese */
+    @font-face {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459WZhyzbi.woff2) format('woff2');
+        unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    h1 {
+        .lib-css(font-size, @h1__font-size-desktop);
+        .lib-css(margin-bottom, @h1__margin-bottom__desktop);
+    }
+}
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .items {
+        .lib-list-reset-styles();
+    }
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * hello_index_helloworld
+ *
+ * @copyright Copyright © 2020 MAGETOP. All rights reserved.
+ * @author    info@magetop.com
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Magetop\Helloworld\Block\Index" name="hello_index_helloworld" template="Magetop_Helloworld::hello.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

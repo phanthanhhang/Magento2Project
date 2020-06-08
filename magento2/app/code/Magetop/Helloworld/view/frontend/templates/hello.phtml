@@ -1,0 +1,77 @@
+<?php
+function getExchangeRatesVCB(){
+    $Link = 'https://www.boi.org.il/currency.xml';
+    $content = @file_get_contents($Link);
+    $xml=simplexml_load_string($content);
+    return $xml;
+}
+?>
+<?php
+$data=getExchangeRatesVCB();
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- <link rel="stylesheet" type="text/css" href="tigia.css"> -->
+	<style type="text/css">
+		.bangtigia{
+			margin: 0 auto;
+			margin-top: 20px;
+			text-align: center;
+			border-collapse: collapse;
+			border: 1px solid #f2f2f2;
+		}
+		.bangtigia td{
+			border-collapse: collapse;
+			border: 1px solid #f2f2f2;
+		}
+		.bangtigia tbody tr:hover{
+			background-color: #CCFFCC;
+		}
+		.title{
+			background-color: #006600;
+			color:white;
+			font-size: 16px;
+		}
+		h3{
+			margin:0 auto;
+			margin-top: 20px;
+			text-align: center;
+		}
+		
+	</style>
+</head>
+<body>
+	<h3>TỈ GIÁ</h3>
+	<table class="bangtigia">
+		<thead>
+	    <tr class="title">
+	        <td>Tên ngoại tệ</td>
+	        <td>Đơn vị</td>
+	        <td>Mã ngoại tệ</td>
+	        <td>Tên nước</td>
+	        <td>Tỉ giá</td>
+	        <td>Thay đổi</td>
+	    </tr>
+	</thead>
+	<tbody>
+	<?php
+	foreach($data->CURRENCY as $item){
+	    ?>
+	    <tr>
+	        <td><?php echo (string)$item->NAME?></td>
+	        <td><?php echo (string)$item->UNIT ?></td>
+	        <td><?php echo (string)$item->CURRENCYCODE ?></td>
+	        <td><?php echo (string)$item->COUNTRY ?></td>
+	        <td><?php echo (string)$item->RATE ?></td>
+	        <td><?php echo (string)$item->CHANGE ?></td>
+	    </tr>
+	    <?php
+	}
+	?>
+	</tbody>
+	</table>
+</body>
+</html>
